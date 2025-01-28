@@ -80,3 +80,55 @@ If your default branch is master (old GitHub repositories), use:
     Check the repository on GitHub:
 
     Go to your GitHub repository page, and you should see your files pushed there.
+
+   The Script: autoUpdateUbuntu.sh
+
+This script ensures that your Ubuntu system is automatically updated each time you log in.
+Script Content:
+
+#!/bin/bash
+
+# autoUpdateUbuntu.sh - Automatically updates Ubuntu system on login
+
+# Run system update
+echo "Starting system update..."
+sudo apt update && sudo apt upgrade -y
+
+# Optionally, you can add additional commands here for cleaning up old packages or upgrading specific packages.
+# For example:
+# sudo apt autoremove -y
+# sudo apt autoclean
+
+echo "System update complete."
+
+Explanation:
+
+    sudo apt update: Fetches the list of available updates.
+    sudo apt upgrade -y: Upgrades all packages that have available updates.
+    Optional commands: You can uncomment and add more commands like sudo apt autoremove to remove unnecessary packages or sudo apt autoclean to clean the package cache.
+
+How to Use the Script:
+
+    Save the script to a file called autoUpdateUbuntu.sh in your project directory.
+
+    Make the script executable:
+
+    Run the following command to make the script executable:
+
+chmod +x autoUpdateUbuntu.sh
+
+Set the script to run at login:
+
+To ensure the script runs each time you log in, you can add it to your shell's startup script (e.g., .bashrc or .zshrc depending on your shell).
+
+    Open your shell’s configuration file:
+
+nano ~/.bashrc  # For Bash users
+
+Add the following line at the end of the file:
+
+    ~/path/to/autoUpdateUbuntu.sh
+
+    Save and exit the editor (CTRL+O to save, then CTRL+X to exit).
+
+Now, each time you open a new terminal session or log in, your system will automatically update.
